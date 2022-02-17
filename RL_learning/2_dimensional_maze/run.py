@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
-'''
+"""
 @Time    :   2022/02/15 21:01:27
 @Author  :   AlphonsoChen
 @Contact :   Alphonsochen821@gmail.com
 
-'''
+"""
 
 # here put the import lib
 
@@ -39,7 +39,7 @@ def update():
                 break
 
     # end of game
-    print('game over')
+    print("game over")
     env.destroy()
 
 

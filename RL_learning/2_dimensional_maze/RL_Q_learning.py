@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
-'''
+"""
 @Time    :   2022/02/15 20:59:02
 @Author  :   AlphonsoChen
 @Contact :   Alphonsochen821@gmail.com
 This part of code is the Q learning agent by 莫烦python
-'''
+"""
 
 # here put the import lib
 
@@ -28,7 +28,8 @@ class QLearningTable:
             state_action = self.q_table.loc[observation, :]
             # some actions may have the same value, randomly choose on in these actions
             action = np.random.choice(
-                state_action[state_action == np.max(state_action)].index)
+                state_action[state_action == np.max(state_action)].index
+            )
         else:
             # choose random action
             action = np.random.choice(self.actions)
@@ -37,7 +38,7 @@ class QLearningTable:
     def learn(self, s, a, r, s_):
         self.check_state_exist(s_)
         q_predict = self.q_table.loc[s, a]
-        if s_ != 'terminal':
+        if s_ != "terminal":
             # next state is not terminal
             q_target = r + self.gamma * self.q_table.loc[s_, :].max()
         else:
@@ -49,8 +50,6 @@ class QLearningTable:
             # append new state to q table
             self.q_table = self.q_table.append(
                 pd.Series(
-                    [0]*len(self.actions),
-                    index=self.q_table.columns,
-                    name=state,
+                    [0] * len(self.actions), index=self.q_table.columns, name=state,
                 )
             )
